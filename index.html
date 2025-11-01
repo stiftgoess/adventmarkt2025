@@ -47,6 +47,16 @@
         clickToZoom: false
       }
     });
+
+    // --- Adjust initial zoom ---
+    const initialZoom = 1.5; // 1 = fit image to window, >1 zooms in
+    const initialCenter = new OpenSeadragon.Point(0.5, 0.5); // (0.5,0.5) = image center
+    // ----------------------------
+
+    // Wait until the image is open before setting zoom
+    viewer.addHandler('open', function() {
+      viewer.viewport.zoomTo(initialZoom, initialCenter, true);
+    });
   </script>
 </body>
 </html>
